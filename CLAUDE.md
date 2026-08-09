@@ -11,13 +11,14 @@
 - **sw.js を変更したら `CACHE_VERSION` を bump**し、画面のバージョン表記も同時に上げる。
 - `js/logic.js` は純粋関数のみ(DOM・fetch・localStorage 禁止)。JXA テストの対象なので ES modules も使わない(plain script + `globalThis.KonomiLogic`)。
 - **localStorage スキーマ変更時は `schema_version` を上げ、旧データからのマイグレーションを書く**(ユーザーの好き嫌い記録を消さない)。
-- **外部 API・課金 API・LLM 呼び出しは導入しない**(人物分析は完全ローカル計算)。
+- **外部 API・課金 API・LLM 呼び出しを PWA 本体には導入しない**(アプリ内の人物分析は完全ローカル計算)。LLM 分析は `tools/analyze_llm.sh`(Mac ローカルの codex/claude CLI・サブスク認証)としてアプリ外で提供し、レポート・実データ JSON は public リポに入れない。
 - ユーザーデータ(好き嫌い記録)はリポジトリに含めない(public リポなので特に厳守)。
 
 ## 作業フロー(ツール固有)
 
 - ロジックは **まず `js/logic.js`** に純粋関数として実装し、`test/test_logic.js` にテストを追加する。副作用(DOM・localStorage・SW 登録)は `js/app.js` に閉じ込める。
 - コードは素の JS(ビルド無し・依存ゼロ)、コメント・UI 文言は**日本語**。
+- LLM 人物分析は、iPhone でエクスポートした JSON を Mac に移して `bash tools/analyze_llm.sh <export.json>` を実行する。
 - デザインは keiki フォーマット厳守: `/Users/soshi/dev/vault/Tools/knowhow/design-formats/keiki.md`(色は必ずトークンの hex 値。確認: `grep -c '#A84600' style.css` 等の機械照合)。
 - 実装後に必ず実行する構文チェック＋テスト(正確なコマンド):
 

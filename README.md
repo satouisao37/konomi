@@ -12,6 +12,16 @@
 2. 共有メニュー →「ホーム画面に追加」
 3. 以後はアイコンから起動して好き嫌いを登録
 
+## 人物分析(LLM)
+
+iPhone でエクスポートした JSON を AirDrop などで Mac に移し、ローカルで認証済みの Codex CLI を使って分析できます。
+
+```bash
+bash tools/analyze_llm.sh <export.json>
+```
+
+レポートは既定で `${KONOMI_REPORT_DIR:-$HOME/dev/vault/Tools/konomi/reports}` に保存されます。`claude` を第2引数にすると Claude CLI を使います。実データ JSON とレポートは public リポジトリに置かないでください。
+
 ## 開発
 
 ```bash

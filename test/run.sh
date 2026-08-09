@@ -3,6 +3,9 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
+bash -n tools/analyze_llm.sh
+bash tools/analyze_llm.sh --dry-run test/fixtures/export_sample.json >/dev/null
+
 osascript -l JavaScript <<'JXA'
 ObjC.import('Foundation');
 ObjC.import('stdlib');
