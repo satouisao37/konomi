@@ -1,9 +1,9 @@
 # このみ (konomi)
 
 自分の好き嫌い(「好きな食べ物」「好きな表情」など任意カテゴリ)を素早く記録し、蓄積から人物分析する iPhone 向け PWA。
-詳細仕様は末尾の `@import`(spec.md)で読み込む。リポジトリ: `satouisao37/konomi`(**public** — GitHub Pages 配信のための例外)。
+詳細仕様は末尾の spec.md(着手前に Read)。リポジトリ: `satouisao37/konomi`(**public** — GitHub Pages 配信のための例外)。
 
-> Issue 作成 → 実装 → 日本語コミット → close の**共通フロー・コミット規約・禁止事項は親 `/Users/soshi/dev/CLAUDE.md`「全ツール共通の作業フロー」に集約**。ここには再掲せず、**このツール固有の前提とコマンドだけ**を書く。
+> Issue 作成 → 実装 → 日本語コミット → close の**共通フロー・コミット規約・禁止事項は親 `/Users/soshi/dev/CLAUDE.md`「コードを変えるときの流れ」に集約**。ここには再掲せず、**このツール固有の前提とコマンドだけ**を書く。
 
 ## 最重要の前提(壊さないこと)
 
@@ -30,12 +30,5 @@
 - 動作確認: `python3 -m http.server 8771 -d .` → `http://localhost:8771/`。停止はポート特定 `lsof -ti tcp:8771 | xargs kill`。ヘッドレス確認は headless Chrome + CDP(共通ノウハウ [[2026-07-04_07-36_headlessChromeはCDPで回収]]・[[2026-07-29_01-30_nodeなしCDP駆動はstdlib自作WS]])。
 
 ## Obsidian Vault 連携
-
-### 仕様ノート(必読)
-@/Users/soshi/dev/vault/Tools/konomi/spec.md
-
-### ツール固有ノウハウフォルダ
-過去のノウハウを参照したくなったら `Glob`/`Read`:
-- `/Users/soshi/dev/vault/Tools/konomi/knowhow/`
-
-(共通ノウハウ・ユーザー好み・キャプチャルール・作業フローは親 `/Users/soshi/dev/CLAUDE.md` で読み込み済み)
+- 仕様: `/Users/soshi/dev/vault/Tools/konomi/spec.md`(着手前に Read する。起動フォルダの外なので @import はしない)
+- 固有ノウハウ: `/Users/soshi/dev/vault/Tools/konomi/knowhow/`(関係しそうなら Glob → Read)
